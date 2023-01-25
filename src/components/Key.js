@@ -15,10 +15,14 @@ function Key({keyVal, bigKey}) {
   }; 
 
   return (
-    <div className='key' id={bigKey && 'big'} onClick={selectLetter}>
+    <div 
+    className='key' 
+    id={bigKey && 'big'} 
+    onClick={selectLetter}
+    >
       {keyVal}
     </div>
-  )
+  );
 }
 
 export default Key;

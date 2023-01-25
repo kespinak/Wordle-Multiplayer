@@ -1,10 +1,11 @@
 import React from 'react';
 import Letter from './Letter';
-// import { boardDefault } from './components/Words';
+import { AppContext } from '../App';
 
 function Board() {
   return (
     <div className='board'>
+      {' '}
       <div className='row'> 
         <Letter letterPos={0} attemptVal={0} />
         <Letter letterPos={1} attemptVal={0} />
