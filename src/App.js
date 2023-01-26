@@ -23,7 +23,7 @@ function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPos: 0}); //! 12
   
-  const [correctWord, setCorrectWord] = useState() //! 14
+  const [correctWord, setCorrectWord] = useState(''); //! 14
   const [wordSet, setWordSet] = useState(new Set());
   const [disabledLetters, setDisabledLetters] = useState([]);
 
