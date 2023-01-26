@@ -11,6 +11,7 @@ export const boardDefault = [
 
 export const generateWordSet = async() => {
   let wordSet;
+  let wordAnswer;
 
   await fetch(wordBank)
     .then((response) => response.text())
@@ -18,10 +19,11 @@ export const generateWordSet = async() => {
     .then((result) => {
       // console.log(result);
       const wordArray = result.split('\r\n');
+      wordAnswer = wordArray[Math.floor(Math.random() * wordArray.length)];
       wordSet = new Set(wordArray); //sets have (O)1 time complexity for 'includes' function vs array is log(N)
       // console.log(wordSet);    
     });
 
-  return {wordSet} //NOTE THAT THIS RETURNS AN OBJECT
+  return {wordSet, wordAnswer} //NOTE THAT THIS RETURNS AN OBJECT
 };
 

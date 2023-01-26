@@ -2,7 +2,7 @@
 //? ALSO, WHY DOES CLICKING WORK FOR LETTERS BUT NOT THE BACKSPACE OR ENTER???
 //? 41...CHROME CONSOLE --->I THINK IS HAS SOMETHING TO DO WITH EXPORT DEFAULT KEYBOARD
 //? ...ALSO TRY GOOGLING: Each child in a list should have a unique "key" prop.
-//IF YOU PRESS DELETE CHROM CONSOLE RETURNS: uncaught typeerror: ondelete is not a function
+//IF YOU PRESS DELETE CHROME CONSOLE RETURNS: uncaught typeerror: ondelete is not a function
 //IF YOU LOOK AT KEYBOARD.JS AT KEYBOARD-PRESS-ENTER...WHY DOES THIS WORK BUT NOT DELETE???
 
 
@@ -11,6 +11,7 @@ import Board from './components/Board';
 import Keyboard from './components/Keyboard';
 import React, { createContext, useState, useEffect } from 'react';
 import { boardDefault, generateWordSet } from './Words';
+import GameOver from './components/GameOver';
 
 export const AppContext = createContext();
 
@@ -18,13 +19,17 @@ function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPos: 0});
   
+  const [correctWord, setCorrectWord] = useState()
   const [wordSet, setWordSet] = useState(new Set());
-  const correctWord = 'RIGHT';
+  const [disabledLetters, setDisabledLetters] = useState([]);
+
+  const [gameOver, setGameOver] = useState({gameOver: false, guessedWord: false});
 
   useEffect(() => {
     generateWordSet().then((words) => {
-      console.log(words);  
+      // console.log(words);  
       setWordSet(words.wordSet);    
+      setCorrectWord(words.wordAnswer)
     });
   }, []);
 
@@ -59,7 +64,12 @@ function App() {
     }
 
     if (currentWord === correctWord) {
-      alert('You Win');
+      setGameOver({gameOver: true, guessedWord: true});
+      return;
+    }
+
+    if (currentAttempt.attempt === 5) {
+      setGameOver({gameOver: true, guessedWord: false})
     }
   };
 
@@ -78,11 +88,15 @@ function App() {
           onDelete, 
           onEnter,
           correctWord,
+          setDisabledLetters,
+          disabledLetters,
+          gameOver,
+          setGameOver
         }} 
       >
         <div className='game'>
           <Board /> 
-          <Keyboard />
+          {gameOver.gameOver ? <GameOver /> : <Keyboard />}
         </div>
       </AppContext.Provider>
     </div>
