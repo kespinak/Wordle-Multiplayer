@@ -9,7 +9,7 @@ function Keyboard() {
 
   const { 
     onEnter, 
-    OnDelete, 
+    onDelete, 
     onSelectLetter,
     disabledLetters,
     board,
@@ -24,7 +24,7 @@ function Keyboard() {
       if (event.key === 'Enter') {
         onEnter();
       } else if (event.key === 'Backspace') {
-        OnDelete();
+        onDelete();
       } else {
         keys1.forEach((key) => {
           if (event.key.toLowerCase() === key.toLowerCase()) {

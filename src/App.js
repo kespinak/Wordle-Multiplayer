@@ -1,13 +1,11 @@
+//2 errors on chrome console log tool: 1(chrome console: non-boolean error) 2(chrome console: each child in list needs a unique key) 
+
 //! need to fix, easy
 //? Need to fix, hard
 //* need to revisit/review
 
-//? HOW IN THE HELL DOES ALL THE TYPING WORK EXCEPT FOR TYPING DELETE BUTTON
-//? ALSO, WHY DOES CLICKING WORK FOR LETTERS BUT NOT THE BACKSPACE OR ENTER???
 //? 41...CHROME CONSOLE --->I THINK IS HAS SOMETHING TO DO WITH EXPORT DEFAULT KEYBOARD
 //? ...ALSO TRY GOOGLING: Each child in a list should have a unique "key" prop.
-//IF YOU PRESS DELETE CHROME CONSOLE RETURNS: uncaught typeerror: ondelete is not a function
-//IF YOU LOOK AT KEYBOARD.JS AT KEYBOARD-PRESS-ENTER...WHY DOES THIS WORK BUT NOT DELETE???
 
 
 import './App.css';
