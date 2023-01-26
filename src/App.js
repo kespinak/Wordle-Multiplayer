@@ -1,3 +1,7 @@
+//! need to fix, easy
+//? Need to fix, hard
+//* need to revisit/review
+
 //? HOW IN THE HELL DOES ALL THE TYPING WORK EXCEPT FOR TYPING DELETE BUTTON
 //? ALSO, WHY DOES CLICKING WORK FOR LETTERS BUT NOT THE BACKSPACE OR ENTER???
 //? 41...CHROME CONSOLE --->I THINK IS HAS SOMETHING TO DO WITH EXPORT DEFAULT KEYBOARD
@@ -17,9 +21,9 @@ export const AppContext = createContext();
 
 function App() {
   const [board, setBoard] = useState(boardDefault);
-  const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPos: 0});
+  const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPos: 0}); //! 12
   
-  const [correctWord, setCorrectWord] = useState()
+  const [correctWord, setCorrectWord] = useState() //! 14
   const [wordSet, setWordSet] = useState(new Set());
   const [disabledLetters, setDisabledLetters] = useState([]);
 
@@ -28,29 +32,29 @@ function App() {
   useEffect(() => {
     generateWordSet().then((words) => {
       // console.log(words);  
-      setWordSet(words.wordSet);    
-      setCorrectWord(words.wordAnswer)
+      setWordSet(words.wordSet);    //* words
+      setCorrectWord(words.wordAnswer) //* words
     });
   }, []);
 
-  const onSelectLetter = (keyVal) => {
-    if (currentAttempt.letterPos > 4) return;
+  const onSelectLetter = (keyVal) => { //! 60
+    if (currentAttempt.letterPos > 4) return; //!61
     const newBoard = [...board];
-    newBoard[currentAttempt.attempt][currentAttempt.letterPos] = keyVal;
+    newBoard[currentAttempt.attempt][currentAttempt.letterPos] = keyVal; //! 63
     setBoard(newBoard);
-    setCurrentAttempt({...currentAttempt, letterPos: currentAttempt.letterPos + 1})
+    setCurrentAttempt({...currentAttempt, letterPos: currentAttempt.letterPos + 1}) //! 65
   };
 
   const onDelete = () => {
-    if (currentAttempt.letterPos === 0) return;
+    if (currentAttempt.letterPos === 0) return; //! 53
     const newBoard = [...board];
-    newBoard[currentAttempt.attempt][currentAttempt.letterPos - 1] = '';
+    newBoard[currentAttempt.attempt][currentAttempt.letterPos - 1] = ''; //! 55
     setBoard(newBoard);
-    setCurrentAttempt({...currentAttempt, letterPos: currentAttempt.letterPos - 1});
+    setCurrentAttempt({...currentAttempt, letterPos: currentAttempt.letterPos - 1}); //! 57
   };
 
   const onEnter = () => {
-    if (currentAttempt.letterPos !== 5) return;
+    if (currentAttempt.letterPos !== 5) return; //! 29
 
     let currentWord = '';
     for (let i=0; i<5; i++) {
@@ -58,7 +62,7 @@ function App() {
     }
 
     if (wordSet.has(currentWord.toLowerCase())) {
-      setCurrentAttempt({ attempt: currentAttempt.attempt + 1, letterPos: 0});
+      setCurrentAttempt({ attempt: currentAttempt.attempt + 1, letterPos: 0}); //! 36
     } else {
       alert('Word Not Found');
     }
@@ -91,7 +95,7 @@ function App() {
           setDisabledLetters,
           disabledLetters,
           gameOver,
-          setGameOver
+          setGameOver //! 88
         }} 
       >
         <div className='game'>

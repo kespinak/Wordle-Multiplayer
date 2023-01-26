@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Letter from './Letter';
 import { AppContext } from '../App';
+
+//! 8
 
 function Board() {
   return (
     <div className='board'>
-      {' '}
-      <div className='row'> 
+      
+      <div className='row'>  
         <Letter letterPos={0} attemptVal={0} />
         <Letter letterPos={1} attemptVal={0} />
         <Letter letterPos={2} attemptVal={0} />

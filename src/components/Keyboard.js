@@ -11,11 +11,16 @@ function Keyboard() {
     onEnter, 
     OnDelete, 
     onSelectLetter,
-    disabledLetters
+    disabledLetters,
+    board,
+    gameOver,
+    currentAttempt
   } = useContext(AppContext);
 
   const handleKeyboard = useCallback(
     (event) => {
+      if (gameOver.gameOver) return;
+
       if (event.key === 'Enter') {
         onEnter();
       } else if (event.key === 'Backspace') {
@@ -23,21 +28,22 @@ function Keyboard() {
       } else {
         keys1.forEach((key) => {
           if (event.key.toLowerCase() === key.toLowerCase()) {
-            onSelectLetter(key)
+            onSelectLetter(key);
           }
         });
         keys2.forEach((key) => {
           if (event.key.toLowerCase() === key.toLowerCase()) {
-            onSelectLetter(key)
+            onSelectLetter(key);
           }
         });
         keys3.forEach((key) => {
           if (event.key.toLowerCase() === key.toLowerCase()) {
-            onSelectLetter(key)
+            onSelectLetter(key);
           }
         });
       }
     },
+    //! 45
   );
 
   useEffect(() => {
@@ -48,6 +54,9 @@ function Keyboard() {
     };
   }, [handleKeyboard]);
 
+  // console.log(disabledLetters)
+
+  //* NEED TO ADD ENABLEDGREENLETTERS & ENABLEDYELLOW LETTERS
   return (
     <div className='keyboard' onKeyDown={handleKeyboard}>
       <div className='line1'> 
