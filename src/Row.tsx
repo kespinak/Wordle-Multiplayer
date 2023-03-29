@@ -1,4 +1,4 @@
-import { Clue, clueClass, CluedLetter, clueWord } from "./clue";
+import { Clue, clueClass, CluedLetter, clueWord } from "./clue"
 
 export enum RowState {
   LockedIn,

@@ -1,6 +1,6 @@
-import { Clue } from "./clue";
-import { Row, RowState } from "./Row";
-import { gameName, maxGuesses } from "./util";
+import { Clue } from "./clue"
+import { Row, RowState } from "./Row"
+import { gameName, maxGuesses } from "./util"
 
 export function About() {
   return (

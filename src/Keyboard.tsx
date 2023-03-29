@@ -1,4 +1,4 @@
-import { Clue, clueClass } from "./clue";
+import { Clue, clueClass } from "./clue"
 
 interface KeyboardProps {
   layout: string;
