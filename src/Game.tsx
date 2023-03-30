@@ -69,10 +69,17 @@ if (initChallenge && !dictionarySet.has(initChallenge)) {
   challengeError = true;
 }
 
-function parseUrlLength(): 
+function parseUrlLength(): number {
+  const lengthParam = urlParam("length");
+  if (!lengthParam) return defaultLength;
+  return limitLength(Number(lengthParam));
 }
 
-function parseUrlGameNumber(): 
+function parseUrlGameNumber(): number {
+  const gameParam = urlParam("game");
+  if (!gameParam) return 1;
+  const gameNumber = Number(gameParam);
+  return gameNumber >= 1 && gameNumber <= 1000 ? gameNumber : 1;
 }
 
 function Game(props: GameProps) {
