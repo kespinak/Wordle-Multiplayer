@@ -328,13 +328,6 @@ function Game(props: GameProps) {
           : "playing a random game"}
       </div>
       <p>
-        <button
-          onClick={() => {
-            share("Link copied to clipboard!");
-          }}
-        >
-          Share a link to this game
-        </button>{" "}
         {gameState !== GameState.Playing && (
           <button
             onClick={() => {
